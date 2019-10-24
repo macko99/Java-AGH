@@ -5,12 +5,6 @@ public class Animal {
     private MapDirection direction = MapDirection.NORTH;
     private Vector2d position = new Vector2d(2, 2);
     private IWorldMap map;
-    private Vector2d newPosition;
-
-    public Animal() {
-        this.direction = MapDirection.NORTH;
-        this.position = new Vector2d(2, 2);
-    }
 
     public Animal(IWorldMap map) {
         this.map = map;
@@ -41,7 +35,7 @@ public class Animal {
             case LEFT: this.direction = this.direction.previous();
                 break;
             case FORWARD:
-                newPosition = position.add(this.direction.toUnitVector());
+                Vector2d newPosition = position.add(this.direction.toUnitVector());
                 if(map.canMoveTo(newPosition)) {
                     position = newPosition;
                 }
