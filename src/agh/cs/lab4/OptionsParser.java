@@ -1,8 +1,8 @@
 package agh.cs.lab4;
 
-public class OptionsParser {
+class OptionsParser {
 
-    public static MoveDirection[] parse(String[] args){
+    static MoveDirection[] parse(String[] args){
         MoveDirection[] directions = new MoveDirection[args.length];
         int i=0;
         for(String arg : args){

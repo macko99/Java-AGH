@@ -1,8 +1,8 @@
 package agh.cs.lab4;
 
 public class Vector2d {
-    public int x;
-    public int y;
+    int x;
+    int y;
 
     public Vector2d(int x, int y){
         this.x = x;

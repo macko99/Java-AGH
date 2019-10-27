@@ -12,6 +12,5 @@ public class World {
         System.out.println(map.toString());
         map.run(directions);
         System.out.println(map.toString());
-        System.out.println("test");
     }
 }

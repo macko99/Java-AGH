@@ -32,7 +32,7 @@ public class RectangularMap implements IWorldMap {
 
     @Override
     public boolean place(Animal animal) {
-        if (this.isOccupied(animal.getPosition()))
+        if (this.isOccupied(animal.getPosition()) || !(animal.getPosition().follows(lowerLeft) && animal.getPosition().precedes(upperRight)))
             return false;
         animals.add(animal);
         return true;
@@ -40,11 +40,13 @@ public class RectangularMap implements IWorldMap {
 
     @Override
     public void run(MoveDirection[] directions) {
-        for(int i=0, j= 0; i<directions.length; i++, j++){
-                j = j%animals.size();
+        if (animals.size() > 0) {
+            for (int i = 0, j = 0; i < directions.length; i++, j++) {
+                j = j % animals.size();
                 animals.get(j).move(directions[i]);
             }
         }
+    }
 
     @Override
     public boolean isOccupied(Vector2d position) {
