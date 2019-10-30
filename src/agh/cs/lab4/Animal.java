@@ -15,10 +15,25 @@ public class Animal {
         this.map = map;
         this.position = position;
     }
+    public Animal (IWorldMap map, Vector2d position, MapDirection direction) {
+        this.map = map;
+        this.position = position;
+        this.direction = direction;
+    }
 
     @Override
     public String toString() {
         return direction.toString();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other)
+            return true;
+        if(!(other instanceof Animal))
+            return false;
+        Animal animal = (Animal) other;
+        return this.position.equals(animal.position) && this.direction.equals(animal.direction) && this.map.equals(animal.map);
     }
 
     public MapDirection getDirection (){

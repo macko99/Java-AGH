@@ -1,8 +1,10 @@
 package agh.cs.lab4;
 
-class OptionsParser {
+import java.util.Arrays;
 
-    static MoveDirection[] parse(String[] args){
+public class OptionsParser {
+
+    public static MoveDirection[] parse(String[] args){
         MoveDirection[] directions = new MoveDirection[args.length];
         int i=0;
         for(String arg : args){
@@ -25,6 +27,6 @@ class OptionsParser {
                     break;
             }
         }
-        return directions;
+        return Arrays.copyOfRange(directions,0,i);
     }
 }

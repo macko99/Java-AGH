@@ -53,12 +53,19 @@ public class MapTest {
 
     @Test
     public void runTest() {
-        MoveDirection[] directions = new MoveDirection[]{FORWARD, FORWARD, FORWARD, FORWARD};
-        map1.run(directions);
+        IWorldMap map = new RectangularMap(10, 5);
+        map.place(new Animal(map));
+        map.place(new Animal(map, new Vector2d(3,4)));
+        map.run(new OptionsParser().parse(new String[]{"f","b","r","l","f","f","r","r","f","f","f","f","f","f","f","f"}));
+        Animal end1 = new Animal(map, new Vector2d(3,4), MapDirection.NORTH);
+        Animal end2 = new Animal(map, new Vector2d(2,0), MapDirection.SOUTH);
+        assertEquals(map.objectAt(new Vector2d(2, 0)), end2);
+        assertEquals(map.objectAt(new Vector2d(3, 4)), end1);
+
+        map1.run(new MoveDirection[]{FORWARD, FORWARD, FORWARD, FORWARD});
         assertEquals(map1.toString(),map2.toString());
-        MoveDirection[] directions2 = new MoveDirection[]{FORWARD, FORWARD, FORWARD, FORWARD, FORWARD,
-                BACKWARD, BACKWARD, BACKWARD, BACKWARD, BACKWARD};
-        map6.run(directions2);
+        map6.run(new MoveDirection[]{FORWARD, FORWARD, FORWARD, FORWARD, FORWARD,
+                BACKWARD, BACKWARD, BACKWARD, BACKWARD, BACKWARD});
         assertEquals(map3.toString(),map6.toString());
     }
 
@@ -78,6 +85,7 @@ public class MapTest {
         Animal animal2 = new Animal(map2);
         map2.place(animal2);
         assertNotEquals(map2.objectAt(new Vector2d(0,0)), animal2);
+        assertNull(map5.objectAt(new Vector2d(3,3)));
     }
 
     @Test
