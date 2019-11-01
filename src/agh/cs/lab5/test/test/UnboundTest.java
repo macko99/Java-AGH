@@ -1,11 +1,12 @@
-package agh.cs.lab4.test;
-
-import static org.junit.Assert.*;
+package agh.cs.lab5.test.test;
 
 import agh.cs.lab4.*;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.Arrays;
+
+import static org.junit.Assert.*;
 
 public class UnboundTest {
 
