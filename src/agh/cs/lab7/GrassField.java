@@ -11,11 +11,9 @@ public class GrassField extends AbstractWorldMap {
 
     public GrassField(int grassFieldsTarget){
         for (int i=0; i < grassFieldsTarget;){
-            double randomX = Math.random();
-            randomX *= (Math.sqrt(grassFieldsTarget*10));
+            double randomX = Math.random()*Math.sqrt(grassFieldsTarget*10);
             int randomXInt = (int) randomX;
-            double randomY = Math.random();
-            randomY *= (Math.sqrt(grassFieldsTarget*10));
+            double randomY = Math.random()*(Math.sqrt(grassFieldsTarget*10));
             int randomYInt = (int) randomY;
 
             Vector2d vectorInt = new Vector2d(randomXInt, randomYInt);
@@ -29,13 +27,6 @@ public class GrassField extends AbstractWorldMap {
 
     public GrassField (List<Grass> grasses){
         this.grasses = new ArrayList<>(grasses);
-    }
-
-    @Override
-    public boolean canMoveTo (Vector2d position){
-        if(animals.get(position.hashCode()) == null)
-            return true;
-        return false;
     }
 
     @Override

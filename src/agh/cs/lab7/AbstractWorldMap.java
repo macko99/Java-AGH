@@ -24,13 +24,13 @@ abstract class AbstractWorldMap implements IWorldMap {
         if (animals.size() > 0) {
             for (int i = 0, j = 0; i < directions.length; i++, j++) {
                 j = j % animals.size();
-                int oldHash = animals.get(j).hashCode();
+                int oldHash = animals.get(j).getPosition().hashCode();
                 Animal animalCurr = animals.get(j);
 
                 animalCurr.move(directions[i]);
                 if(oldHash != animalCurr.hashCode()){
                     animalsMap.remove(oldHash);
-                    animalsMap.put(animalCurr.hashCode(), animalCurr);
+                    animalsMap.put(animalCurr.getPosition().hashCode(), animalCurr);
                 }
             }
         }
@@ -44,10 +44,16 @@ abstract class AbstractWorldMap implements IWorldMap {
         return false;
     }
 
+    @Override
+    public boolean canMoveTo (Vector2d position){
+        if(animalsMap.get(position.hashCode()) == null)
+            return true;
+        return false;
+    }
 
     @Override
     public Object objectAt(Vector2d position) {
-            return animals.get(position.hashCode());
+            return animalsMap.get(position.hashCode());
     }
     @Override
     public String toString () {

@@ -36,6 +36,7 @@ public class GrassFieldTest {
     @Test
     public void runTest() {
         map.run(new OptionsParser().parse(new String[]{"f","b","r","l","f","f","r","r","f","f","f","f","f","f","f","f"}));
+        System.out.println(map.toString());
         Animal end1 = new Animal(map, new Vector2d(1,-5), MapDirection.SOUTH);
         assertEquals(map.objectAt(new Vector2d(1, -5)), end1);
     }
@@ -50,7 +51,6 @@ public class GrassFieldTest {
     @Test
     public void objectAtTest() {
         Animal animal1 = new Animal(map, new Vector2d(1,1), MapDirection.NORTH);
-        System.out.println(map.toString());
         assertEquals(map.objectAt(new Vector2d(1,1)), animal1);
         assertEquals(map.objectAt(new Vector2d(3,3)), new Grass(new Vector2d(3, 3)));
         assertNotEquals(map.objectAt(new Vector2d(0,0)), animal1);
