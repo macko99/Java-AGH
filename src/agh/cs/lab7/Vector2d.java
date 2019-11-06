@@ -38,7 +38,7 @@ public class Vector2d {
         return new Vector2d(Math.min(other.x, this.x), Math.min(other.y, this.y));
     }
 
-    public boolean isInBounds(Vector2d v1, Vector2d v2) {
+    boolean isInBounds(Vector2d v1, Vector2d v2) {
         return this.follows(v1) && this.precedes(v2);
     }
 

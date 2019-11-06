@@ -9,7 +9,7 @@ public class GrassField extends AbstractWorldMap {
     private Vector2d lowerLeft = new Vector2d(Integer.MAX_VALUE,Integer.MAX_VALUE);
     private Vector2d upperRight = new Vector2d(Integer.MIN_VALUE,Integer.MIN_VALUE);
 
-    public GrassField(int grassFieldsTarget){
+    GrassField(int grassFieldsTarget){
         for (int i=0; i < grassFieldsTarget;){
             double randomX = Math.random()*Math.sqrt(grassFieldsTarget*10);
             int randomXInt = (int) randomX;
@@ -41,7 +41,7 @@ public class GrassField extends AbstractWorldMap {
             return null;
         }
 
-    public void updateBounds () {
+    private void updateBounds() {
         for (Grass grass : grasses) {
             if (!grass.getPosition().isInBounds(lowerLeft, upperRight))
                 upperRight = upperRight.upperRight(grass.getPosition());

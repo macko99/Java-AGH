@@ -4,16 +4,17 @@ import java.util.*;
 
 abstract class AbstractWorldMap implements IWorldMap {
 
-    protected Map<Integer, Animal> animalsMap = new HashMap<>();
-    protected List<Animal> animals = new ArrayList<>();
+    private Map<Integer, Animal> animalsMap = new HashMap<>();
+    List<Animal> animals = new ArrayList<>();
 
     abstract Vector2d getLowerLeft();
     abstract Vector2d getUpperRight();
 
     @Override
     public boolean place(Animal animal) {
-        if (!canMoveTo(animal.getPosition()))
-            return false;
+        if (!canMoveTo(animal.getPosition())) {
+            throw new IllegalArgumentException(animal.getPosition().toString() + " is already occupied");
+        }
         animals.add(animal);
         animalsMap.put(animal.getPosition().hashCode(), animal);
         return true;
@@ -38,17 +39,12 @@ abstract class AbstractWorldMap implements IWorldMap {
 
     @Override
     public boolean isOccupied(Vector2d position) {
-        if(objectAt(position) != null) {
-            return true;
-        }
-        return false;
+        return objectAt(position) != null;
     }
 
     @Override
     public boolean canMoveTo (Vector2d position){
-        if(animalsMap.get(position.hashCode()) == null)
-            return true;
-        return false;
+        return animalsMap.get(position.hashCode()) == null;
     }
 
     @Override
