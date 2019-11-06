@@ -11,7 +11,7 @@ public class UnboundedMap extends AbstractWorldMap {
     private Vector2d upperRight = new Vector2d(0,0);
 
     public UnboundedMap (List<Stone> stones){
-        this.stones = stones;
+        this.stones = new ArrayList<>(stones);
     }
 
     @Override

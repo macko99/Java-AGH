@@ -1,9 +1,9 @@
-package agh.cs.lab5;
+package agh.cs.lab6;
 
-public class Stone {
+public class Grass {
     private Vector2d position;
 
-    public Stone (Vector2d position){
+    public Grass(Vector2d position){
         this.position = position;
     }
 
@@ -12,16 +12,16 @@ public class Stone {
     }
 
     public String toString(){
-        return ("r");
+        return ("g");
     }
 
     @Override
     public boolean equals(Object other) {
         if (this == other)
             return true;
-        if(!(other instanceof Stone))
+        if(!(other instanceof Grass))
             return false;
-        Stone stone = (Stone) other;
-        return this.position.equals(stone.position);
+        Grass grass = (Grass) other;
+        return this.position.equals(grass.position);
     }
 }

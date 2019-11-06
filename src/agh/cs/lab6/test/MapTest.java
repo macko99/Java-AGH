@@ -1,11 +1,11 @@
-package agh.cs.lab5.test.test;
+package agh.cs.lab6.test;
 
-import agh.cs.lab5.*;
+import agh.cs.lab6.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import static agh.cs.lab5.MoveDirection.BACKWARD;
-import static agh.cs.lab5.MoveDirection.FORWARD;
+import static agh.cs.lab6.MoveDirection.BACKWARD;
+import static agh.cs.lab6.MoveDirection.FORWARD;
 import static org.junit.Assert.*;
 
 public class MapTest {

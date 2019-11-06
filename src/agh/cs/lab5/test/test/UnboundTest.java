@@ -1,6 +1,6 @@
 package agh.cs.lab5.test.test;
 
-import agh.cs.lab4.*;
+import agh.cs.lab5.*;
 import org.junit.Before;
 import org.junit.Test;
 
