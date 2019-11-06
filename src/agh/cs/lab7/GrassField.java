@@ -33,11 +33,9 @@ public class GrassField extends AbstractWorldMap {
 
     @Override
     public boolean canMoveTo (Vector2d position){
-        for (Animal animal : animals) {
-            if (animal.getPosition().equals(position))
-                return false;
-        }
-        return true;
+        if(animals.get(position.hashCode()) == null)
+            return true;
+        return false;
     }
 
     @Override

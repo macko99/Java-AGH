@@ -1,10 +1,10 @@
 package agh.cs.lab7;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 abstract class AbstractWorldMap implements IWorldMap {
 
+    protected Map<Integer, Animal> animalsMap = new HashMap<>();
     protected List<Animal> animals = new ArrayList<>();
 
     abstract Vector2d getLowerLeft();
@@ -15,6 +15,7 @@ abstract class AbstractWorldMap implements IWorldMap {
         if (!canMoveTo(animal.getPosition()))
             return false;
         animals.add(animal);
+        animalsMap.put(animal.getPosition().hashCode(), animal);
         return true;
     }
 
@@ -23,7 +24,14 @@ abstract class AbstractWorldMap implements IWorldMap {
         if (animals.size() > 0) {
             for (int i = 0, j = 0; i < directions.length; i++, j++) {
                 j = j % animals.size();
-                animals.get(j).move(directions[i]);
+                int oldHash = animals.get(j).hashCode();
+                Animal animalCurr = animals.get(j);
+
+                animalCurr.move(directions[i]);
+                if(oldHash != animalCurr.hashCode()){
+                    animalsMap.remove(oldHash);
+                    animalsMap.put(animalCurr.hashCode(), animalCurr);
+                }
             }
         }
     }
@@ -39,11 +47,7 @@ abstract class AbstractWorldMap implements IWorldMap {
 
     @Override
     public Object objectAt(Vector2d position) {
-        for (Animal animal : animals) {
-            if (animal.getPosition().equals(position))
-                return animal;
-        }
-        return null;
+            return animals.get(position.hashCode());
     }
     @Override
     public String toString () {

@@ -10,6 +10,14 @@ public class Vector2d {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 13;
+        hash += this.x * 31;
+        hash += this.y * 17;
+        return hash;
+    }
+
+    @Override
     public String toString() {
         return "(" + x + "," + y + ")" ;
     }
@@ -49,7 +57,7 @@ public class Vector2d {
         if(!(other instanceof Vector2d))
             return false;
         Vector2d vector = (Vector2d) other;
-        return vector.x == this.x && vector.y == this.y;
+        return vector.hashCode() == this.hashCode();
     }
 
     public Vector2d opposite(){
