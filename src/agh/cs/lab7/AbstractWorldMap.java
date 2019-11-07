@@ -25,11 +25,11 @@ abstract class AbstractWorldMap implements IWorldMap {
         if (animals.size() > 0) {
             for (int i = 0, j = 0; i < directions.length; i++, j++) {
                 j = j % animals.size();
-                int oldHash = animals.get(j).getPosition().hashCode();
                 Animal animalCurr = animals.get(j);
+                int oldHash = animalCurr.getPosition().hashCode();
 
                 animalCurr.move(directions[i]);
-                if(oldHash != animalCurr.hashCode()){
+                if(oldHash != animalCurr.getPosition().hashCode()){
                     animalsMap.remove(oldHash);
                     animalsMap.put(animalCurr.getPosition().hashCode(), animalCurr);
                 }
