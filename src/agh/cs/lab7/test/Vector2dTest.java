@@ -1,6 +1,6 @@
 package agh.cs.lab7.test;
 
-import agh.cs.lab2.Vector2d;
+import agh.cs.lab7.Vector2d;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

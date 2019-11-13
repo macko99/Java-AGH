@@ -2,7 +2,7 @@ package agh.cs.lab7.test;
 
 import org.junit.Test;
 
-import static agh.cs.lab2.MapDirection.*;
+import static agh.cs.lab7.MapDirection.*;
 import static org.junit.Assert.assertEquals;
 
 public class MapDirectionTest {

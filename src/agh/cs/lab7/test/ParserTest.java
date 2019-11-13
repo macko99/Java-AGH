@@ -1,10 +1,10 @@
 package agh.cs.lab7.test;
 
-import agh.cs.lab2.MoveDirection;
-import agh.cs.lab2.OptionsParser;
+import agh.cs.lab7.MoveDirection;
+import agh.cs.lab7.OptionsParser;
 import org.junit.Test;
 
-import static agh.cs.lab2.MoveDirection.*;
+import static agh.cs.lab7.MoveDirection.*;
 import static org.junit.Assert.assertArrayEquals;
 
 
