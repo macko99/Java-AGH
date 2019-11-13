@@ -1,4 +1,4 @@
-package agh.cs.lab7.test;
+package agh.cs.lab777.test;
 
 import agh.cs.lab7.*;
 import org.junit.Before;
