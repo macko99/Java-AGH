@@ -1,11 +1,11 @@
-package agh.cs.lab777;
+package agh.cs.lab8;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver{
+abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
 
     private Map<Vector2d, Animal> animalsMap = new HashMap<>();
     List<Animal> animals = new ArrayList<>();

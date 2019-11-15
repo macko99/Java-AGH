@@ -1,10 +1,13 @@
 package agh.cs.lab7;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 abstract class AbstractWorldMap implements IWorldMap {
 
-    private Map<Integer, Animal> animalsMap = new HashMap<>();
+    private Map<Vector2d, Animal> animalsMap = new HashMap<>();
     List<Animal> animals = new ArrayList<>();
 
     abstract Vector2d getLowerLeft();
@@ -16,7 +19,7 @@ abstract class AbstractWorldMap implements IWorldMap {
             throw new IllegalArgumentException(animal.getPosition().toString() + " is already occupied");
         }
         animals.add(animal);
-        animalsMap.put(animal.getPosition().hashCode(), animal);
+        animalsMap.put(animal.getPosition(), animal);
         return true;
     }
 
@@ -26,12 +29,12 @@ abstract class AbstractWorldMap implements IWorldMap {
             for (int i = 0, j = 0; i < directions.length; i++, j++) {
                 j = j % animals.size();
                 Animal animalCurr = animals.get(j);
-                int oldHash = animalCurr.getPosition().hashCode();
+                Vector2d oldVector = animalCurr.getPosition();
 
                 animalCurr.move(directions[i]);
-                if(oldHash != animalCurr.getPosition().hashCode()){
-                    animalsMap.remove(oldHash);
-                    animalsMap.put(animalCurr.getPosition().hashCode(), animalCurr);
+                if(oldVector != animalCurr.getPosition()){
+                    animalsMap.remove(oldVector);
+                    animalsMap.put(animalCurr.getPosition(), animalCurr);
                 }
             }
         }
@@ -44,12 +47,12 @@ abstract class AbstractWorldMap implements IWorldMap {
 
     @Override
     public boolean canMoveTo (Vector2d position){
-        return animalsMap.get(position.hashCode()) == null;
+        return animalsMap.get(position) == null;
     }
 
     @Override
     public Object objectAt(Vector2d position) {
-            return animalsMap.get(position.hashCode());
+        return animalsMap.get(position);
     }
     @Override
     public String toString () {

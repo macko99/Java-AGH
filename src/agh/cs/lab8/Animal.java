@@ -1,4 +1,4 @@
-package agh.cs.lab777;
+package agh.cs.lab8;
 
 import java.util.ArrayList;
 import java.util.List;

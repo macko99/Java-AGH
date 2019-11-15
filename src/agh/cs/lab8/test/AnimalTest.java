@@ -1,4 +1,4 @@
-package agh.cs.lab777.test;
+package agh.cs.lab8.test;
 
 import agh.cs.lab2.Animal;
 import agh.cs.lab2.Vector2d;
