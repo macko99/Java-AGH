@@ -14,18 +14,21 @@ public class Animal {
     public Animal(IWorldMap map) {
         this.map = map;
         addObserver((IPositionChangeObserver) map);
+        addObserver(map.getBoundaries());
     }
 
     public Animal (IWorldMap map, Vector2d position) {
         this.map = map;
         this.position = position;
         addObserver((IPositionChangeObserver) map);
+        addObserver(map.getBoundaries());
     }
     public Animal (IWorldMap map, Vector2d position, MapDirection direction) {
         this.map = map;
         this.position = position;
         this.direction = direction;
         addObserver((IPositionChangeObserver) map);
+        addObserver(map.getBoundaries());
     }
 
     private void addObserver(IPositionChangeObserver observer){

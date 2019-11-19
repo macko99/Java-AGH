@@ -11,10 +11,11 @@ public interface IWorldMap {
     /**
      * Indicate if any object can move to the given position.
      *
-     * @param position
-     *            The position checked for the movement possibility.
      * @return True if the object can move to that position.
      */
+
+    MapBoundary getBoundaries ();
+
     boolean canMoveTo(Vector2d position);
 
     /**

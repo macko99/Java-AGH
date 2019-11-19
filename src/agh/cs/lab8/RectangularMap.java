@@ -12,6 +12,11 @@ public class RectangularMap extends AbstractWorldMap {
     }
 
     @Override
+    public MapBoundary getBoundaries() {
+        return null;
+    }
+
+    @Override
     public boolean canMoveTo(Vector2d position) {
         return (super.canMoveTo(position) && position.isInBounds(lowerLeft, upperRight));
     }
