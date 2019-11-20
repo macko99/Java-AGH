@@ -1,4 +1,4 @@
-package agh.cs.lab8;
+package agh.cs.labf;
 
 public class World {
 
@@ -6,7 +6,7 @@ public class World {
         try {
             MoveDirection[] directions = new OptionsParser().parse(args);
 
-            IWorldMap map = new GrassField(10);
+            IWorldMap map= new GrassField(10);
 
             map.place(new Animal(map));
             map.place(new Animal(map, new Vector2d(3, 4)));

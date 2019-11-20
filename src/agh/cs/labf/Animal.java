@@ -1,4 +1,4 @@
-package agh.cs.lab8;
+package agh.cs.labf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +13,22 @@ public class Animal {
 
     public Animal(IWorldMap map) {
         this.map = map;
-        addObserver((IPositionChangeObserver)map);
+        addObserver((IPositionChangeObserver) map);
+        addObserver(map.getBoundaries());
     }
 
     public Animal (IWorldMap map, Vector2d position) {
         this.map = map;
         this.position = position;
-        addObserver((IPositionChangeObserver)map);
+        addObserver((IPositionChangeObserver) map);
+        addObserver(map.getBoundaries());
     }
     public Animal (IWorldMap map, Vector2d position, MapDirection direction) {
         this.map = map;
         this.position = position;
         this.direction = direction;
-        addObserver((IPositionChangeObserver)map);
+        addObserver((IPositionChangeObserver) map);
+        addObserver(map.getBoundaries());
     }
 
     private void addObserver(IPositionChangeObserver observer){
@@ -74,14 +77,14 @@ public class Animal {
             case FORWARD:
                 Vector2d newPosition = position.add(this.direction.toUnitVector());
                 if(map.canMoveTo(newPosition)) {
-                    positionChanged(this.position, newPosition);
+                    positionChanged(position, newPosition);
                     position = newPosition;
                 }
                 break;
             case BACKWARD:
                 Vector2d newPosition2 = position.subtract(this.direction.toUnitVector());
                 if(map.canMoveTo(newPosition2)) {
-                    positionChanged(this.position, newPosition2);
+                    positionChanged(position, newPosition2);
                     position = newPosition2;
                 }
                 break;

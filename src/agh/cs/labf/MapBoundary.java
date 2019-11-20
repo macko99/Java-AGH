@@ -1,9 +1,9 @@
-package agh.cs.lab8;
+package agh.cs.labf;
 
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class MapBoundary {
+public class MapBoundary implements IPositionChangeObserver {
 
     private SortedSet<Vector2d> animalsX = new TreeSet<>((v1, v2) -> {
         if (v1.x < v2.x)
@@ -26,6 +26,7 @@ public class MapBoundary {
         animalsY.add(vector);
     }
 
+    @Override
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
         animalsX.remove(oldPosition);
         animalsY.remove(oldPosition);

@@ -1,4 +1,4 @@
-package agh.cs.lab8;
+package agh.cs.labf;
 
 /**
  * The interface responsible for interacting with the map of the world.
@@ -13,6 +13,8 @@ public interface IWorldMap {
      *
      * @return True if the object can move to that position.
      */
+
+    MapBoundary getBoundaries();
 
     boolean canMoveTo(Vector2d position);
 

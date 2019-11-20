@@ -1,4 +1,4 @@
-package agh.cs.lab8;
+package agh.cs.labf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 public class GrassField extends AbstractWorldMap {
 
     private List<Grass> grasses = new ArrayList<>();
+    private MapBoundary boundaries = new MapBoundary();
 
     GrassField(int grassFieldsTarget){
         for (int i=0; i < grassFieldsTarget;){
@@ -48,4 +49,17 @@ public class GrassField extends AbstractWorldMap {
         return boundaries.getUpperRight();
     }
 
+    @Override
+    public boolean place (Animal animal){
+        if(super.place(animal)) {
+            boundaries.addElement(animal.getPosition());
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public MapBoundary getBoundaries(){
+        return this.boundaries;
+    }
 }

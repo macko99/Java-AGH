@@ -9,6 +9,7 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
 
     private Map<Vector2d, Animal> animalsMap = new HashMap<>();
     private List<Animal> animals = new ArrayList<>();
+    MapBoundary boundaries = new MapBoundary();
 
     abstract Vector2d getLowerLeft();
     abstract Vector2d getUpperRight();
@@ -21,6 +22,7 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
         }
         animals.add(animal);
         animalsMap.put(animal.getPosition(), animal);
+        boundaries.addElement(animal.getPosition());
         return true;
     }
 
@@ -58,5 +60,6 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
         Animal animal = animalsMap.get(oldPosition);
         animalsMap.remove(oldPosition);
         animalsMap.put(newPosition, animal);
+        boundaries.positionChanged(oldPosition,newPosition);
     }
 }

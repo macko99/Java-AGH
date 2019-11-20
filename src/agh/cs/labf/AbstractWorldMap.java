@@ -1,20 +1,21 @@
-package agh.cs.lab777;
+package agh.cs.labf;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver{
+abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
 
     private Map<Vector2d, Animal> animalsMap = new HashMap<>();
-    List<Animal> animals = new ArrayList<>();
+    private List<Animal> animals = new ArrayList<>();
 
     abstract Vector2d getLowerLeft();
     abstract Vector2d getUpperRight();
 
     @Override
     public boolean place(Animal animal) {
+
         if (!canMoveTo(animal.getPosition())) {
             throw new IllegalArgumentException(animal.getPosition().toString() + " is already occupied");
         }
@@ -57,6 +58,5 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver{
         Animal animal = animalsMap.get(oldPosition);
         animalsMap.remove(oldPosition);
         animalsMap.put(newPosition, animal);
-
     }
 }

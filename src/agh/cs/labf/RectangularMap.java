@@ -1,4 +1,4 @@
-package agh.cs.lab8;
+package agh.cs.labf;
 
 public class RectangularMap extends AbstractWorldMap {
 
@@ -9,6 +9,11 @@ public class RectangularMap extends AbstractWorldMap {
 
         this.lowerLeft = new Vector2d(0, 0);
         this.upperRight = new Vector2d(width - 1, height - 1);
+    }
+
+    @Override
+    public MapBoundary getBoundaries() {
+        return null;
     }
 
     @Override
